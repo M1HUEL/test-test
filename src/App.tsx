@@ -1,41 +1,31 @@
-import { useState } from "react"
-import { UserDetails } from "./components/user-details"
+import { useEffect, useState } from "react"
+import { PostContainer } from "./components/post-container"
+import { UserProvider } from "./contexts/user-context"
+import { useFetchUser } from "./hooks/use-fetch-user"
+import { User } from "./types"
 
-export type User = {
-  id: number
-  username: string
-  email: string
-}
+// export function App() {
+//   const [user, setUser] = useState<User | null>(null)
+//   useEffect(() => {
+//     const data = useFetchUser(5)
+//     if (data.loading) {
+//       return console.log("Cargando usuario...")
+//     }
+//     if (data.error) {
+//       return console.log("Error: ", data.error)
+//     }
+//     if (!data.user) {
+//       return console.log("No user found.")
+//     }
+//     setUser(data.user)
+//   }, [user])
+//   return (
+//     <UserProvider>
+//       <PostContainer />
+//     </UserProvider>
+//   )
+// }
 
-export const App = () => {
-  const [users, setUsers] = useState<User[]>([
-    {
-      id: 0,
-      username: "miguel",
-      email: "imiguel@email.com",
-    },
-    {
-      id: 1,
-      username: "anson",
-      email: "anson@email.com",
-    },
-  ])
-
-  return (
-    <main>
-      <h1>App</h1>
-
-      <ul
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "4rem",
-        }}
-      >
-        {users.map((user) => {
-          return <UserDetails key={user.id} user={user} setUsers={setUsers} />
-        })}
-      </ul>
-    </main>
-  )
+export function App() {
+  return <main>App</main>
 }
